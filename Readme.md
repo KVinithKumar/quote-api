@@ -20,3 +20,9 @@ use this commands
 
 git clone https://github.com/KVinithKumar/quote-api.git
 cd quote-api
+<!-- Install dependencies -->
+npm install
+<!-- Start the server: -->
+node index.js
+<!-- Open your browser or Postman and test -->
+http://localhost:3000/api/quote
