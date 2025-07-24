@@ -19,6 +19,7 @@ A simple RESTful API that returns a random inspirational quote and applies IP-ba
 use this commands
 
 git clone https://github.com/KVinithKumar/quote-api.git
+<!-- path -->
 cd quote-api
 <!-- Install dependencies -->
 npm install
