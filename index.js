@@ -7,7 +7,6 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Rate limiter middleware (5 requests/min per IP)
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000,
   max: 5,
@@ -20,7 +19,6 @@ const limiter = rateLimit({
   }
 });
 
-// Swagger mock setup
 const swaggerDocument = {
   openapi: "3.0.0",
   info: {
@@ -55,20 +53,17 @@ const swaggerDocument = {
   }
 };
 
-// Apply rate limiter to quote route
+
 app.use("/api/quote", limiter);
 
-// Endpoint
 app.get('/api/quote', (req, res) => {
   const random = quotes[Math.floor(Math.random() * quotes.length)];
   console.log(`[${new Date().toISOString()}] IP: ${req.ip} - 200`);
   res.json({ quote: random });
 });
 
-// Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
